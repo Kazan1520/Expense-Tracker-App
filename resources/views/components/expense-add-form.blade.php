@@ -4,10 +4,20 @@
         <div class="px-4 sm:px-0">
           <h3 class="text-lg font-medium leading-6 text-gray-900">Add an expense or income</h3>
           </p>
+          @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div><br />
+    @endif
         </div>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
-        <form action="#" method="POST">
+        <form action="{{ route('expense.store') }}" method="POST">
+          @csrf
           <div class="shadow overflow-hidden sm:rounded-md">
             <div class="px-4 py-5 bg-white sm:p-6">
               <div class="grid grid-cols-6 gap-6">
@@ -25,8 +35,11 @@
                   <label for="category" class="block text-sm font-medium text-gray-700">Type</label>
                   <input type="text" id="category" name="category" list="categories" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                    <datalist id="categories">
-                    <option>Szkoła</option>
-                    <option>Nauka</option>
+                     @foreach ($categories as $category)
+                       <option value="{{ $category->name }}">{{ $category->name }}</option>
+                     @endforeach
+                    {{-- <option>Szkoła</option>
+                    <option>Nauka</option> --}}
                    </datalist>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
