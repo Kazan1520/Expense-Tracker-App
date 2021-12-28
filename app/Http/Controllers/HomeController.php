@@ -14,11 +14,17 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $wydatki = $user->expenses->all();
+        $expenses = $user->expenses->where('type', 'expense');
+        $incomes = $user->expenses->where('type', 'income');
+        
         
         $categories = $user->categories;
-        dd($categories);
+    
         return view('home', [
-            'categories' => $categories
+            'categories' => $categories,
+            'expenses' => $expenses,
+            'incomes' => $incomes,
         ]);
     }
 
