@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExpenseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
+Route::resource('/expense', ExpenseController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
