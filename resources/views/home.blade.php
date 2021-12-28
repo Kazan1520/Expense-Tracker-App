@@ -2,5 +2,5 @@
 
 
 @section('content')
-    tutaj se robisz wszystko
+    @include('components.expense-add-form')
 @endsection
