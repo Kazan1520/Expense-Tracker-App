@@ -29,9 +29,6 @@
     </ul>
     
     @endforeach
-</div>
-<div class="m-10 flex-auto">
-    @include('components.expense-summary')
-</div>
-</div>
+    <a href="{{ route('payment.index') }}" style="background-color: orange; margin:15px; border-radius:15px; padding:5px">Przelewixy</a>
+
 @endsection
