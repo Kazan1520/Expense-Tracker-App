@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="flex flex-row">
-    <div class="m-10 flex-auto">
+    <div class="m-10 basis-1/5">
         @include('components.expense-summary')
     </div>
     
@@ -29,6 +29,7 @@
     </ul>
     
     @endforeach
+    <div class="ml-10 mr-10 basis-1/4">dupsko</div>
     <a href="{{ route('payment.index') }}" style="background-color: orange; margin:15px; border-radius:15px; padding:5px">Przelewixy</a>
 
 @endsection
