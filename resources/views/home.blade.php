@@ -2,6 +2,11 @@
 
 
 @section('content')
+<div class="flex flex-row">
+    <div class="m-10 basis 1/4">
+        @include('components.expense-summary')
+    </div>
+    <div class="basis-1/2">
     @if(session()->get('success'))
         <div class="alert alert-success">
         {{ session()->get('success') }}  
@@ -22,6 +27,7 @@
         <li>{{ $income->name }}</li>
     </ul>
     
-        
     @endforeach
+</div>
+</div>
 @endsection

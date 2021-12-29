@@ -14,7 +14,6 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $wydatki = $user->expenses->all();
         $expenses = $user->expenses->where('type', 'expense');
         $incomes = $user->expenses->where('type', 'income');
         
