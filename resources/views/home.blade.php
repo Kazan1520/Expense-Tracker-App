@@ -3,9 +3,10 @@
 
 @section('content')
 <div class="flex flex-row">
-    <div class="m-10 basis 1/4">
+    <div class="m-10 flex-auto">
         @include('components.expense-summary')
     </div>
+    
     <div class="basis-1/2">
     @if(session()->get('success'))
         <div class="alert alert-success">
@@ -28,6 +29,9 @@
     </ul>
     
     @endforeach
+</div>
+<div class="m-10 flex-auto">
+    @include('components.expense-summary')
 </div>
 </div>
 @endsection

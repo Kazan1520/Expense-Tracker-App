@@ -670,6 +670,9 @@ select{
 .flex-1{
   flex: 1 1 0%;
 }
+.flex-auto{
+  flex: 1 1 auto;
+}
 .shrink-0{
   flex-shrink: 0;
 }
