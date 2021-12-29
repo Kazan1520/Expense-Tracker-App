@@ -51,4 +51,19 @@ class User extends Authenticatable
     public function expenses(){
         return $this->hasManyThrough(Expense::class, Category::class);
     }
+    //płatności który zostały wykonane do mnie
+    public function paymentsReceived()
+    {
+        return $this->hasMany(Payment::class,'payer_id');
+    }
+    //płatności które ja wykonałem
+    public function paymentsMade()
+    {
+        return $this->hasMany(Payment::class, 'payee_id');
+    }
+
+    public function wszystkie()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
