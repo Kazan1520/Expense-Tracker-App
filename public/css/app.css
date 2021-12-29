@@ -583,6 +583,12 @@ select{
 .ml-6{
   margin-left: 1.5rem;
 }
+.ml-10{
+  margin-left: 2.5rem;
+}
+.mr-10{
+  margin-right: 2.5rem;
+}
 .block{
   display: block;
 }

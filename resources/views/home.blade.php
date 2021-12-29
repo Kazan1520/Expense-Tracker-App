@@ -7,7 +7,7 @@
         @include('components.expense-summary')
     </div>
     
-    <div class="basis-1/2">
+    <div class="ml-10 mr-10 basis-1/2">
     @if(session()->get('success'))
         <div class="alert alert-success">
         {{ session()->get('success') }}  
