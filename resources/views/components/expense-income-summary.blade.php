@@ -15,11 +15,7 @@
     console.log(incomes);
     var yValues = [expenses, incomes];
 
-var barColors = [];
-for (let index = 0; index < yValues.length; index++) {
-  barColors.push("#" + Math.floor(Math.random()*16777215).toString(16));
-  
-}
+    var barColors = ["#63b598", "#ce7d78"];
 
 new Chart("compare", {
   type: "doughnut",
