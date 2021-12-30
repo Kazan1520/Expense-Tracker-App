@@ -39,13 +39,11 @@
                      @endforeach
                    </datalist>
                 </div>
-                <br />
-                <div class="col-span-6 sm:col-span-3 w-full flex items-center">
-                <label class="inline-flex items-center m-2">
-                    <input type="radio" class="form-radio" name="type" value="expense">
-                    <span class="ml-2">Expense</span>
-                  </label>
-                  <label class="inline-flex items-center m-2">
+                <div class="col-span-6 sm:col-span-3 text-center w-full">
+
+                    <input type="radio" class="form-radio mr-3" name="type" value="expense">
+                    <span class="mr-2">Expense</span>
+
                     <input type="radio" class="form-radio" name="type" value="income">
                     <span class="ml-2">Income</span>
                   </div>
