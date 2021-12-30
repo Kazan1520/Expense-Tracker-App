@@ -46,8 +46,11 @@ new Chart("myChart", {
     title: {
       display: true,
       text: "Your Expenses"
+    },
+    legend:{
+      display: false
     }
     }
   }
-});
+);
 </script>
