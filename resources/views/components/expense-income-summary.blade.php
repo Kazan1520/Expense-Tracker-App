@@ -11,8 +11,6 @@
     var expenses = {{$sumExpenses}};
     var incomes = {{$sumIncomes}};
     var xValues = ["expense", "income"];
-    console.log(expenses);
-    console.log(incomes);
     var yValues = [expenses, incomes];
 
     var barColors = [ "#ce7d78","#63b598"];
