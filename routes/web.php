@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()){
+        return redirect('/home');
+    }
+else{return view('auth.login');}
+    
 });
 
 // Route::get('/home', function () {
@@ -27,7 +32,7 @@ Route::resource('/expense', ExpenseController::class);
 
 Route::resource('/payment', PaymentController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
