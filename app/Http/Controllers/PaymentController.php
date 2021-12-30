@@ -35,12 +35,14 @@ class PaymentController extends Controller
     public function create()
     {
         $users = User::all()->except(Auth::id());
-        // dd($users);
         return view('payment.create', [
             'users' => $users
         ]);
     }
-
+    // public function setApprove(Request $request)
+    // {
+    //     dd($request->all);
+    // }
     /**
      * Store a newly created resource in storage.
      *
@@ -57,7 +59,7 @@ class PaymentController extends Controller
         $payment->status = 'waiting';
         $payment->amount = $data['amount'];
         $payment->save();
-        return redirect('/payment');
+        return redirect('/payment')->with('success', 'payment made!');
     }
 
     /**
@@ -91,7 +93,21 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $payment = Payment::find($id);
+        if($data['clicked'] == 'approve')
+        {
+            $payment->status='approved';
+            $success = 'Change status to approved!';
+        }
+        if($data['clicked']=='decline')
+        {
+            $payment->status='rejected';
+            $success = 'Change status to rejected!';
+        } 
+
+        $payment->save();
+        return redirect('/payment')->with('success', $success);
     }
 
     /**

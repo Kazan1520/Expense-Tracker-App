@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div><br />
+    @endif
     <form action="{{ route('payment.store') }}" method="POST">
         @csrf
         <h1 style="font-size: 40px">Tworzenie przelewu</h1>
@@ -11,7 +20,7 @@
         <input type="number" step="0.01" name="amount">
         <br><br>
         <label for="">Wybierz odbiorce przelewu:</label>
-        <select name="payer" id="">
+        <select name="payee" id="">
             @foreach ($users as $user)
                 <option value="{{ $user->id }}">{{ $user->name }}</option>
             @endforeach

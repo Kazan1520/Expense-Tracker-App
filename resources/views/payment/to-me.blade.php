@@ -35,7 +35,7 @@
               </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right">
-                <div class="text-sm text-gray-900">{{ $item->status }}$</div>
+                <div class="text-sm text-gray-900">{{ $item->status }}</div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right">
                 <div class="text-sm text-gray-900">{{ $item->amount }}$</div>
@@ -45,13 +45,18 @@
             </td>
             @if ($item->status == 'waiting')
             <td>
-                <button id="approve" class="m-2 bg-green-500 text-white p-2 font-medium rounded-md">
+                <form action="{{ route('payment.update', $item->id) }}" method="post">
+                  @csrf
+                  @method('PUT')
+                  <button id="approve" name="clicked"  type="submit" value="approve" class="m-2 bg-green-500 text-white p-2 font-medium rounded-md">
                     Approve
                 </button>
-                <button id="decline" class="m-2 bg-red-500 text-white p-2 font-medium rounded-md">
+                
+                
+                <button id="decline" name="clicked" value="decline" type="submit" va class="m-2 bg-red-500 text-white p-2 font-medium rounded-md">
                     Decline
                 </button>
-
+              </form>
                 </button>
             </td>
                 
