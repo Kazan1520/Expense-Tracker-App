@@ -22,9 +22,11 @@ Route::get('/', function () {
 // Route::get('/home', function () {
 //     return view('home');
 // });
+Route::post('/payment', [App\Http\Controllers\PaymentController::class, 'update']);
 Route::resource('/expense', ExpenseController::class);
 
 Route::resource('/payment', PaymentController::class);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard', function () {
