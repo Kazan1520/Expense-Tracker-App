@@ -17,13 +17,15 @@ class HomeController extends Controller
         $expenses = $user->expenses->where('type', 'expense');
         $incomes = $user->expenses->where('type', 'income');
         
-        
         $categories = $user->categories;
-    
+        $sumExpenses =  $user->expenses->where('type', 'expense')->sum('sum');
+        $sumIncomes =  $user->expenses->where('type', 'income')->sum('sum');
         return view('home', [
             'categories' => $categories,
             'expenses' => $expenses,
             'incomes' => $incomes,
+            'sumExpenses' => $sumExpenses,
+            'sumIncomes' => $sumIncomes,
         ]);
     }
 

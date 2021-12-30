@@ -1,12 +1,17 @@
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<div class="mt-20 md:mt-0 md:col-span-2">
+    <div class="shadow sm:rounded-md">
+      <div class="px-4 py-5 bg-white sm:p-6 rounded-2xl">
+
+<canvas id="myChart" class="w-52"></canvas>
+      </div>
+    </div>
+</div>
 
 <script>
     var expenses = {!! json_encode($expenses, JSON_HEX_TAG) !!};
     var categories = {!! json_encode($categories, JSON_HEX_TAG) !!};
     var xValues = [];
     var yValues = [];
-    console.log(expenses);
-    console.log(categories);
     categories.forEach(category => {
         category.sum = 0;
         expenses.forEach(expense => {
@@ -17,14 +22,11 @@
         xValues.push(category.name);
         yValues.push(category.sum);
     });
+var barColors = [];
 
-var barColors = [
-  "#b91d47",
-  "#00aba9",
-  "#2b5797",
-  "#e8c3b9",
-  "#1e7145"
-];
+for (let index = 0; index < yValues.length; index++) {
+  barColors.push("#" + Math.floor(Math.random()*16777215).toString(16));
+}
 
 new Chart("myChart", {
   type: "doughnut",
