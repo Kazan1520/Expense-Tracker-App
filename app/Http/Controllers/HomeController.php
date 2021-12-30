@@ -17,13 +17,20 @@ class HomeController extends Controller
         $expenses = $user->expenses->where('type', 'expense');
         $incomes = $user->expenses->where('type', 'income');
         
-        
+        $latestExpenses = $user->expenses()->where('type', 'expense')->orderByDesc('created_at')->limit(4)->get();
+        $latestIncomes = $user->expenses()->where('type', 'income')->orderByDesc('created_at')->limit(4)->get();
+
         $categories = $user->categories;
-    
+        $sumExpenses =  $user->expenses->where('type', 'expense')->sum('sum');
+        $sumIncomes =  $user->expenses->where('type', 'income')->sum('sum');
         return view('home', [
             'categories' => $categories,
             'expenses' => $expenses,
             'incomes' => $incomes,
+            'sumExpenses' => $sumExpenses,
+            'sumIncomes' => $sumIncomes,
+            'latestExpenses' => $latestExpenses,
+            'latestIncomes' => $latestIncomes,
         ]);
     }
 
