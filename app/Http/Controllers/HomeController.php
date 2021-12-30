@@ -25,6 +25,7 @@ class HomeController extends Controller
         $categories = $user->categories;
         $sumExpenses =  $user->expenses->where('type', 'expense')->sum('sum');
         $sumIncomes =  $user->expenses->where('type', 'income')->sum('sum');
+        
         return view('home', [
             'categories' => $categories,
             'expenses' => $expenses,

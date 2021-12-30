@@ -2,7 +2,7 @@
     <div class="shadow sm:rounded-md">
       <div class="px-4 py-5 bg-white sm:p-6 rounded-2xl">
 
-<canvas id="myChart" class="w-52"></canvas>
+<canvas id="myChart" class="w-full"></canvas>
       </div>
     </div>
 </div>
@@ -46,7 +46,11 @@ new Chart("myChart", {
     title: {
       display: true,
       text: "Your Expenses"
+    },
+    legend:{
+      display: false
+    }
     }
   }
-});
+);
 </script>

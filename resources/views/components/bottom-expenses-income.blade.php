@@ -35,6 +35,7 @@
               <td class="px-6 py-4 whitespace-nowrap text-right">
                 <div class="text-sm text-rose-600">-{{$item->sum}}$</div>
               </td>
+            </tr>
               @endforeach
 
             <!-- More people... -->

@@ -11,7 +11,7 @@
         <input type="number" step="0.01" name="amount">
         <br><br>
         <label for="">Wybierz odbiorce przelewu:</label>
-        <select name="payee" id="">
+        <select name="payer" id="">
             @foreach ($users as $user)
                 <option value="{{ $user->id }}">{{ $user->name }}</option>
             @endforeach
