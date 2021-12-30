@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,9 +14,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $expenses = $user->expenses->where('type', 'expense');
-        $incomes = $user->expenses->where('type', 'income');
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
+        $expenses = $user->expenses()->where('type', 'expense')->get();
+        $incomes = $user->expenses()->where('type', 'income')->get();
         
         $latestExpenses = $user->expenses()->where('type', 'expense')->orderByDesc('created_at')->limit(4)->get();
         $latestIncomes = $user->expenses()->where('type', 'income')->orderByDesc('created_at')->limit(4)->get();
