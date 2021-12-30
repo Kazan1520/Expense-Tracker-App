@@ -55,6 +55,10 @@ class User extends Authenticatable
     //płatności które ja wykonałem
     public function paymentsMade()
     {
+        return $this->hasMany(Payment::class, 'payer_id');
+    }
+    public function paymentsReceived()
+    {
         return $this->hasMany(Payment::class, 'payee_id');
     }
 
