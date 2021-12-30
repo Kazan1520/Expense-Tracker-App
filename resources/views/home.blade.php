@@ -18,23 +18,14 @@
         {{ session()->get('success') }}  
         </div>
     @endif
+    <div class="md-10">
     @include('components.expense-add-form')
+</div>
+<div class="m-10"></div>
+    @include('components.bottom-expenses-income')
+    </div>
+</div>
 
-    <h1>Twoje wydatki</h1>
-    @foreach ($expenses as $expense)
-    <ul>
-        <li>{{ $expense->name }}</li>
-    </ul>
-    
-    @endforeach
-    <h1>Twoje wpływy</h1>
-    @foreach ($incomes as $income)
-    <ul>
-        <li>{{ $income->name }}</li>
-    </ul>
-    
-    @endforeach
-    <div class="ml-10 mr-10 basis-1/4">dupsko</div>
-    <a href="{{ route('payment.index') }}" style="background-color: orange; margin:15px; border-radius:15px; padding:5px">Przelewixy</a>
+
 
 @endsection

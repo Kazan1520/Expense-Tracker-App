@@ -15,7 +15,7 @@
     console.log(incomes);
     var yValues = [expenses, incomes];
 
-    var barColors = ["#63b598", "#ce7d78"];
+    var barColors = [ "#ce7d78","#63b598"];
 
 new Chart("compare", {
   type: "doughnut",
