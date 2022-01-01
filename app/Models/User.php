@@ -62,8 +62,4 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class, 'payee_id');
     }
 
-    public function everyPayment()
-    {
-        return $this->hasMany(Payment::class);
-    }
 }

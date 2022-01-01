@@ -6,6 +6,8 @@ use App\Http\Requests\StoreExpenseRequest;
 use App\Models\Category;
 use App\Models\Expense;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Nette\Schema\Expect;
 
 class ExpenseController extends Controller
 {
@@ -16,7 +18,15 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
+        $expenses = $user->expenses()->where('type', 'expense')->get();
+        $incomes = $user->expenses()->where('type', 'income')->get();
+
+        return view('expense.index', [
+            'incomes'=> $incomes,
+            'expenses' => $expenses,
+        ]);
     }
 
     /**
@@ -104,6 +114,8 @@ class ExpenseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $expense = Expense::find($id);
+        $expense->delete();
+        return redirect('/expense')->with('success', 'Expense removed');
     }
 }
