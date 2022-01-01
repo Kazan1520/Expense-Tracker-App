@@ -18,7 +18,6 @@ class HomeController extends Controller
         $user = User::find($userId);
         $expenses = $user->expenses()->where('type', 'expense')->get();
         $incomes = $user->expenses()->where('type', 'income')->get();
-        
         $latestExpenses = $user->expenses()->where('type', 'expense')->orderByDesc('created_at')->limit(4)->get();
         $latestIncomes = $user->expenses()->where('type', 'income')->orderByDesc('created_at')->limit(4)->get();
 

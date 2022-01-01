@@ -7,7 +7,8 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Expense;
+use App\Models\Category;
 class PaymentController extends Controller
 {
     /**
@@ -20,7 +21,6 @@ class PaymentController extends Controller
         $user = auth()->user();
         $toMe = $user->paymentsReceived;//do mnie
         $fromMe = $user->paymentsMade;// ode mnie
-        
         return view('payment.index',[
             'toMe' => $toMe,
             'fromMe' => $fromMe,
@@ -99,6 +99,40 @@ class PaymentController extends Controller
         {
             $payment->status='approved';
             $success = 'Change status to approved!';
+            $expense = new Expense();
+            $category = Category::where('name', 'Created')->where('id', $payment->payer_id)->get()->first();
+            if ($category == null)
+            {
+                $newCategory = new Category();
+                $newCategory->user_id = $payment->payer_id;
+                $newCategory->name = 'Created';
+                $newCategory->save();
+                $category = $newCategory;
+            }
+
+            $expense->category_id = $category->id;
+            $expense->name = $payment->name;
+            $expense->sum = $payment->amount;
+            $expense->type = 'income';
+            $expense->save();
+            
+            $category = Category::where('name', 'Requested')->where('id', $payment->payee_id)->get()->first();
+            if ($category == null)
+            {
+                $newCategory = new Category();
+                $newCategory->user_id = $payment->payee_id;
+                $newCategory->name = 'Requested';
+                $newCategory->save();
+                $category = $newCategory;
+            }
+            $expense = new Expense();
+            $expense->category_id = $category->id;
+            $expense->name = $payment->name;
+            $expense->sum = $payment->amount;
+            $expense->type = 'expense';
+            $expense->save();
+
+
         }
         if($data['clicked']=='decline')
         {

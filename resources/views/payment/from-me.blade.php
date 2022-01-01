@@ -1,7 +1,7 @@
 <div class="mt-20 md:mt-0 md:col-span-2 ">
     <div class="shadow sm:rounded-md">
       <div class="px-4 py-5 bg-white sm:p-6 rounded-2xl">
-    <h2 style="font-size: 40px; justify-content:center">Made payments</h2>
+    <h2 style="font-size: 40px; justify-content:center">Create payments</h2>
     @if (isset($fromMe) && $fromMe->count())
     <table class="mr-3 divide-gray-200 w-full">
         <thead class="bg-gray-50 w-full">
@@ -54,7 +54,7 @@
     
         
     <div style="margin: 20px">
-        <a href="{{ route('payment.create') }}" style="background-color: greenyellow; padding:15px; border-radius:20px;">Wykonaj płatność</a>
+        <a href="{{ route('payment.create') }}" style="background-color: greenyellow; padding:15px; border-radius:20px;">Create a payment</a>
 
     </div>
       </div>
