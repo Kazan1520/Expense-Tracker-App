@@ -53,8 +53,8 @@
     @endif
     
         
-    <div style="margin: 20px">
-        <a href="{{ route('payment.create') }}" style="background-color: greenyellow; padding:15px; border-radius:20px;">Create a payment</a>
+    <div style="margin-top: 20px">
+        <a href="{{ route('payment.create') }}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create a payment</a>
 
     </div>
       </div>
