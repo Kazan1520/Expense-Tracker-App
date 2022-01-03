@@ -5,12 +5,19 @@
   <div class="md:col-span-1">
     <div class="px-4 sm:px-0 w-full">
 @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+      <div class="alert alert-danger text-center w-1/3 mx-auto">
+        <ul class="rounded-xl text-center m-2 bg-red-500 gb-opacity-50 p-3 text-black" id="container">
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+          <script>
+            setTimeout(fade_out, 5000);
+
+              function fade_out() {
+                $("#container").fadeOut().empty();
+}
+          </script>
+      </ul>
       </div><br />
     @endif
     <div class="mt-5 md:mt-0 md:col-span-2">

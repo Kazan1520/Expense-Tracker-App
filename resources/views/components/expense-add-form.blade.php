@@ -1,14 +1,21 @@
 <div class="mt-10 sm:mt-0">
       <div class="md:col-span-1">
         <div class="px-4 sm:px-0 w-full">
-          <h3 class="m-6 text-4xl font-medium leading-6 text-gray-900 text-center">Add an expense or income</h3>
+          <h3 class="m-6 text-4xl font-medium leading-6 text-gray-900 text-center ">Add an expense or income</h3>
           </p>
           @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
+      <div class="alert alert-danger" id="hideMe">
+        <ul class="rounded-xl text-center m-2 bg-red-500 gb-opacity-50 p-3 text-black" id="container">
             @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
             @endforeach
+            <script>
+              setTimeout(fade_out, 5000);
+
+                function fade_out() {
+                  $("#container").fadeOut().empty();
+}
+            </script>
         </ul>
       </div><br />
     @endif
