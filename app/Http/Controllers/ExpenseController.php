@@ -20,8 +20,8 @@ class ExpenseController extends Controller
     {
         $userId = auth()->user()->id;
         $user = User::find($userId);
-        $expenses = $user->expenses()->where('type', 'expense')->get();
-        $incomes = $user->expenses()->where('type', 'income')->get();
+        $expenses = $user->expenses()->where('type', 'expense')->paginate(10);
+        $incomes = $user->expenses()->where('type', 'income')->paginate(10);
 
         return view('expense.index', [
             'incomes'=> $incomes,
